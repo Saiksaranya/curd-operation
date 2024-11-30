@@ -1,0 +1,61 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Employee and Product API",
+      "description": "API documentation for Employee and Product management"
+    },
+    "host": "localhost:3000",
+    "basePath": "/api",
+    "schemes": ["http"],
+    "paths": {
+      "/employees": {
+        "post": {
+          "summary": "Add a new employee",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "employee",
+              "required": true,
+              "schema": { "$ref": "#/definitions/Employee" }
+            }
+          ],
+          "responses": { "201": { "description": "Employee created" } }
+        }
+      },
+      "/employees/{id}": {
+        "delete": {
+          "summary": "Delete an employee",
+          "parameters": [
+            { "name": "id", "in": "path", "required": true, "type": "string" }
+          ],
+          "responses": { "200": { "description": "Employee deleted" } }
+        }
+      },
+      "/employees/name/{name}": {
+        "get": {
+          "summary": "Get an employee by name",
+          "parameters": [
+            { "name": "name", "in": "path", "required": true, "type": "string" }
+          ],
+          "responses": { "200": { "description": "Employee data" } }
+        }
+      },
+      "/employees/highest-salary": {
+        "get": {
+          "summary": "Get employee with the highest salary",
+          "responses": { "200": { "description": "Employee data" } }
+        }
+      }
+    },
+    "definitions": {
+      "Employee": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "salary": { "type": "number" }
+        }
+      }
+    }
+  }
+  
